@@ -1,0 +1,101 @@
+<%- include("partials/header") -%>
+
+<%- include("partials/title") -%>
+
+<section class="date">
+    <div class="text-center">
+        <label>Von</label>
+        <input type="date" id="startDate" value="2020-06-24">
+        <label>Bis</label>
+        <input type="date" id="endDate" value="2020-06-25" />
+    </div>
+</section>
+
+<section class="bikes">
+    <div class="container-fluid">
+        <div class="row">
+            <% bikes.forEach(function(bike) { %>
+            <div class="feature-box col-lg-4">
+                <img src="<%=bike.img%>" width="200px" />
+                <h1><%=bike.bike%></h1>
+                <label>Brand: <%=bike.brand%></label>
+                <label>Typ: <%=bike.type%></label>
+                <label>Height: <%=bike.hight%></label>
+                <label>Color: <%=bike.color%></label>
+                <label>Price: <%=bike.price%>€ (1 Day), <%=bike.price*5%>€ (1 Week), <%=bike.price*15%>€ (1
+                    Month)</label>
+                <input class="form-control text-center" type="number" id="<%=bike.bike%> nr" />
+                <button style="margin-top: 2%;" class="btn btn-secondary" onclick="addBasket(event)"
+                    id="<%=bike.bike%>">Add to Basket</button>
+            </div>
+            <% }) %>
+        </div>
+    </div>
+</section>
+
+<script type="text/javascript" src="/javascript/bikes.js"></script>
+
+<div class="container bike-chart">
+    <canvas id="myChart" width="400" height="150"></canvas>
+</div>
+
+<!-- Chart.js  -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+
+<!-- Declaration of arrays for chart  -->
+
+<script>
+    var bikeNames = [];
+    var bikeAvailability = [];
+</script>
+
+<!-- ForEach loop for intialisation of arrays -->
+
+<% bikes.forEach(function(bike) { %>
+<script>
+    bikeNames.push("<%=bike.bike%>");
+    bikeAvailability.push("<%=bike.available%>");
+</script>
+<% }) %>
+
+<!-- Creating the chart -->
+<script>
+    let myChart = document.getElementById("myChart").getContext("2d");
+    var bikesObject = "<%=bikes%>"; //Full object
+
+    let massPopChart = new Chart(myChart, {
+        type: "pie",
+        data: {
+            labels: bikeNames,
+            datasets: [{
+                label: "Rents",
+                data: bikeAvailability,
+                backgroundColor: [
+                    "yellow", "red", "blue", "green", "purple", "grey", "pink"
+                ],
+                hoverBorderWidth: 3,
+                hoverBorderColor: "black"
+            }]
+        },
+        options: {
+            title: {
+                display: true,
+                text: "Bike Availability",
+                fontSize: 25,
+            },
+            legend: {
+                display: true,
+                position: "right",
+                labels: {
+                    fontColor: "black",
+                }
+            },
+            tooltips: {
+                enabled: true
+            }
+        }
+    }); 
+</script>
+
+<%- include("partials/footer") -%>

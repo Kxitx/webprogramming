@@ -1,0 +1,163 @@
+/*Header*/ 
+
+.fa-shopping-cart {
+    margin-right: 5px;
+}
+
+/*Features Section*/
+
+#features {
+ padding:  2% 15% 0;
+ background-color: #dae1e7;
+ position: relative;
+}
+
+.feature-box {
+    text-align: center;
+    padding: 5%;
+}
+
+.icon {
+    color: black;
+    margin-bottom: 1rem;
+}
+
+.icon:hover {
+    color: grey;
+}
+
+/*Testimonial Section*/
+
+#testimonials {
+  text-align: center; 
+  background-color: #27496d;
+  color: #fff;
+}
+
+.testimonial-image {
+  width: 10%;
+  border-radius: 100%;
+  margin: 20px;
+}
+
+
+.carousel-item {
+    padding: 7% 15%; 
+}
+
+/*Pricing Section*/
+
+#pricing {
+    padding: 50px 100px;
+    text-align: center;
+    background-color: #dae1e7;
+}
+
+.pricing-column {
+    padding: 3% 2%;
+}
+
+/*Contact*/
+
+.container-fluid {
+    padding: 0 10%;
+}
+
+.contact-form {
+    background-color: ghostwhite;
+
+}
+
+.contact-status {
+color: green; 
+font-weight: bold;
+}
+
+.map-lead-text {
+    margin-top: 20px;
+}
+
+.map-class {
+    margin-top: 50px;
+}
+
+/*Footer*/
+
+.list-inline {
+    margin-top: 20px;
+}
+
+.fab {
+    padding: 0 100px;
+}
+
+/* Checkout Section */
+.checkout-icon {
+    color: green;
+    margin: 20px 0;
+}
+
+.checkout-text {
+    margin-bottom: 250px;
+}
+
+/* Error Page */
+
+/* SVG bike */
+.bike-chart {
+    background-color: ghostwhite; 
+    padding: 20px; 
+    margin-bottom: 50px;
+}
+
+/* SVG bike */
+#right-wheel, #left-wheel {
+    animation: wheel 1s infinite linear;
+    transform-origin: center;
+    transform-box: fill-box;
+    }
+    
+    #man-bike {
+    animation: bike 1s ease-in-out infinite alternate;
+    transform-origin: bottom;
+    }
+    
+    #hat {
+       animation: hat 1s infinite ease-in-out alternate;
+       transform-origin: center;
+       transform-box: fill-box;
+    }
+    
+    
+    @keyframes wheel {
+        from {
+          transform: rotateZ(0deg);
+        }
+        to {
+            transform: rotateZ(360deg);
+        }
+    }
+    
+    @keyframes bike {
+        from {
+          transform: rotateX(0deg);
+        }
+        to {
+            transform: rotateX(20deg);
+        }
+    }
+    
+    @keyframes hat {
+        from {
+          transform: translateY(0%);
+        }
+        to {
+            transform: translateY(40%);
+        }
+    }
+
+/* Admin Page */
+
+.dashboard-button {
+   margin-top: 30px
+}

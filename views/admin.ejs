@@ -1,0 +1,27 @@
+<%- include("partials/header") -%>
+
+<%- include("partials/title") -%>
+
+<!-- Example for a cookie -->
+
+<p class="text-center">You have visited the page <%=viewCount %> time(s) in this session.</p>
+</div>
+
+<!-- Reseting database -->
+
+<form action="/resetDb" method="post" class="text-center">
+  <button class="btn btn-danger btn-lg" type="submit">Reset Database</button>
+</form>
+
+<!-- AJAX example -->
+
+<div id="dashboard" class="dashboard-button text-center">
+  <button class="btn btn-info" type="button" onclick="loadDoc()"> Open Dashboard</button>
+</div>
+<script type="text/javascript" src="/javascript/admin.js"></script>
+
+<script>
+
+</script>
+
+<%- include("partials/footer") -%>

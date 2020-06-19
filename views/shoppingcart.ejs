@@ -1,0 +1,74 @@
+<%- include("partials/header") -%>
+
+<%- include("partials/title") -%>
+
+<section id="basket">
+    <div class="container">
+        <div class="row">
+            <h2>Your Shopping Cart:</h2>
+        </div>
+        <div id="items"></div>
+
+    </div>
+</section>
+
+<section id="checkout" class="pt-5">
+    <div class="container">
+        <div class="row">
+            <h2>Checkout</h2>
+        </div>
+        <div class="row">
+            <form method="POST" action="checkout">
+                <input class="h-0" id="info" name="info" value="" style="visibility: hidden;"></input>
+                <div class="form-group">
+                    <label class="form-text text-left">Email</label>
+                    <input type="email" name="email" class="form-control" id="inputEmail">
+                    <small class="form-text text-muted text-left">We will never share your email with someone
+                        else!</small>
+                </div>
+                <div class="form-group">
+                    <label for="payment">Payment</label>
+                    <select class="form-control" name="payment" id="inputPayment">
+                        <option>Cash</option>
+                        <option>Paypal</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-secondary" onclick="checkout(event)">Checkout</button>
+                <br>
+                <p> Your data will be used according to our data policy.</p>
+                <p class="alert-danger"> <%= msg %> </p>
+            </form>
+        </div>
+    </div>
+</section>
+
+<script>
+    var items = [];
+    var i = 0;
+    Object.keys(localStorage).forEach(function (key) {
+        items[i] = localStorage.getItem(key);
+        i++;
+    });
+    var text = "";
+
+    items.forEach(function (item) {
+        row = document.createElement("div");
+        row.classList.add("row");
+
+        arr = item.split(",");
+        child = document.createElement("label");
+        var date = "Von " + arr[2] + " bis " + arr[3] + ", ";
+        var id = arr[0] + ": ";
+        var amount = "Amount: " + arr[1];
+        text = document.createTextNode(id + date + amount);
+
+        row.appendChild(child);
+        child.appendChild(text);
+        document.getElementById("items").appendChild(row);
+
+        text = "," + arr.toString();
+        document.getElementById("info").setAttribute("value", document.getElementById("info").getAttribute("value") + "," + text);
+    });
+</script>
+
+<%- include("partials/footer") -%>
